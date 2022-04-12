@@ -1,5 +1,5 @@
 <?php
-"SELECT ? question, choice1, choice2, choice3, choice4 FROM Questions50505 ORDER BY RAND()";
+"SELECT question, choice1, choice2, choice3, choice4 FROM Questions50505 ORDER BY RAND()";
 $row = $result->fetch_row();
 $q = $row[0];
 $c1 = $row[1];
