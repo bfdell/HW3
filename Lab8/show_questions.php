@@ -37,7 +37,7 @@ $mysqli->close();
 <title>Show Questions</title>
 
 <body>
-    <!-- <a href="logout.php">Logout</a> -->
+    <a href="insert_question.php">Insert Question</a>
 </body>
 
 </html>

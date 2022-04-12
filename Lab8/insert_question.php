@@ -17,6 +17,9 @@ if ($action == "Insert") {
         $mysqli = db_connect();
         $mysqli->query($sql);
         $mysqli->close();
+
+        //EXECUTES show_questions
+        include("show_questions.php");
     }
 }
 ?>
