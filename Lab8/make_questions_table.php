@@ -9,7 +9,7 @@ require_once("functions.php");
 $mysqli = db_connect();
 
 $sql = "CREATE TABLE Questions22344 (
-    id INT NOT NULLAUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT,
     question VARCHAR(1024) NOT NULL,
     choice1 VARCHAR(1024) NOT NULL,
     choice2 VARCHAR(1024) NOT NULL,
