@@ -9,7 +9,7 @@ $action = $_POST['action'];
 
 if ($action == "Insert") {
     if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
-        $sql = "INSERT INTO Questions22344 (question, choice1, choice2, choice3, choice4, answer) VALUES
+        $sql = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
         ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
 
         // echo var_dump($_POST);

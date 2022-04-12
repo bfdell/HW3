@@ -6,7 +6,7 @@ $mysqli = new mysqli(
     "sienasel_sandbox"
 );
 
-$result = $mysqli->query("SHOW COLUMNS FROM Questions22344");
+$result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
 echo
 '<table>';
 echo
@@ -17,7 +17,7 @@ while ($row = $result->fetch_row()) {
 }
 echo '</tr>';
 $result->close();
-$result = $mysqli->query("SELECT * FROM Questions22344");
+$result = $mysqli->query("SELECT * FROM Questions50505");
 
 while ($row = $result->fetch_row()) {
     echo '<tr>';
