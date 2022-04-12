@@ -11,6 +11,7 @@ echo
 '<table>';
 echo
 '<tr>';
+echo var_dump($result);
 while ($row = $result->fetch_row()) {
     echo '<th>' . $row[0] . '</th>';
 }
