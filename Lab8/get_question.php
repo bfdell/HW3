@@ -11,22 +11,22 @@ $c3 = $row[3];
 $c4 = $row[4];
 // $a = $row[5];
 
-if ($action == "Insert") {
-    if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
-        $sql = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
-        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
+// if ($action == "Insert") {
+//     if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
+//         $sql = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
+//         ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
 
-        // echo var_dump($_POST);
-        require_once("functions.php");
-        $mysqli = db_connect();
-        $mysqli->query($sql);
-        $mysqli->close();
+//         // echo var_dump($_POST);
+//         require_once("functions.php");
+//         $mysqli = db_connect();
+//         $mysqli->query($sql);
+//         $mysqli->close();
 
-        //EXECUTES show_questions
-        header("Location: http://www.sienasellbacks.com/bf08dell/Lab8/show_questions.php");
-        die();
-    }
-}
+//         //EXECUTES show_questions
+//         header("Location: http://www.sienasellbacks.com/bf08dell/Lab8/show_questions.php");
+//         die();
+//     }
+// }
 ?>
 
 <!DOCTYPE html>
