@@ -19,7 +19,8 @@ if ($action == "Insert") {
         $mysqli->close();
 
         //EXECUTES show_questions
-        include("show_questions.php");
+        header("show_questions.php");
+        die();
     }
 }
 ?>
