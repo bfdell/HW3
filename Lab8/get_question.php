@@ -43,7 +43,6 @@ shrink-to-fit=no">
 <body>
     <form method="post" action="get_question.php">
         <label><?php echo $q ?><br>
-        <input type="text" name="question" style="width: 70vh">
         </label>
         <br>
         <div class="questionfield">
@@ -52,7 +51,7 @@ shrink-to-fit=no">
             </label>
         </div>
         <div class="questionfield">
-            <label><?php echo $c2 ?>br>
+            <label><?php echo $c2 ?><br>
             <input type="radio" name="answer" value="2">
             </label>
         </div>
