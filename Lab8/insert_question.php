@@ -33,7 +33,7 @@ shrink-to-fit=no">
 </head>
 
 <body>
-    <form method="get" action=".">
+    <form method="post" action=".">
         <label>Question<br>
         <input type="text" name="question" style="width: 70vh">
         </label>
