@@ -19,7 +19,7 @@ if ($action == "Insert") {
         $mysqli->close();
 
         //EXECUTES show_questions
-        header("show_questions.php");
+        header("Location: http://www.sienasellbacks.com/bf08dell/Lab8/show_questions.php");
         die();
     }
 }
