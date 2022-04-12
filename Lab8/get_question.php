@@ -1,5 +1,8 @@
 <?php
-"SELECT question, choice1, choice2, choice3, choice4 FROM Questions50505 ORDER BY RAND()";
+require_once("functions.php");
+$mysqli = db_connect();
+$query = "SELECT question, choice1, choice2, choice3, choice4 FROM Questions50505 ORDER BY RAND()";
+$result = $mysqli->query($query);
 $row = $result->fetch_row();
 $q = $row[0];
 $c1 = $row[1];
