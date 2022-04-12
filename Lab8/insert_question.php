@@ -12,6 +12,7 @@ if ($action == "Insert") {
         $sql = "INSERT INTO Questions22344 (question, choice1, choice2, choice3, choice4, answer) VALUES
         ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
 
+        var_dump($_POST);
         require_once("functions.php");
         $mysqli = db_connect();
         $mysqli->query($sql);
