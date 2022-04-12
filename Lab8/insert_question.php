@@ -33,7 +33,7 @@ shrink-to-fit=no">
 </head>
 
 <body>
-    <form method="get" action="insert_question.php">
+    <form method="get" action=".">
         <label>Question<br>
         <input type="text" name="question" style="width: 70vh">
         </label>
