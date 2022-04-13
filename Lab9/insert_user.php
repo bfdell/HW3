@@ -12,12 +12,12 @@ if ($action == "Insert") {
         $existQuery = "SELECT username FROM Users50505 WHERE ' .$username ' = username";
 
         $previousUsers = $sqli->query($existQuery);
-        if(!$previousUsers) {
+        if($previousUsers != false) {
             //RUNS QUERY THAT INSERTS USER IF USER ISN'T ALREADY THERE
             $mysqli->query($insertQuery);
             $mysqli->close();
         } else {
-            die();
+            die($username . " is already taken");
             $mysqli->close();
         }
         // echo var_dump($_POST);
