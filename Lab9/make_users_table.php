@@ -4,8 +4,7 @@ if ($_GET['key'] != "505") {
     die("Access denied");
 }
 
-require_once("functions.php");
-$mysqli = db_connect();
+$mysqli = new mysqli("localhost", "sienasel_sbxusr", "Sandbox@)!&", "sienasel_sandbox");
 
 $sql = "CREATE TABLE Users50505 (
     username VARCHAR(64) NOT NULL,
