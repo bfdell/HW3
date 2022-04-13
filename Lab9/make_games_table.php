@@ -6,7 +6,7 @@ if($_GET['key'] != "505") {
 $mysqli = new mysqli("localhost", "sienasel_sbxusr", "Sandbox@)!&", "sienasel_sandbox");
 
 $sql = "CREATE TABLE Games50505 ( 
-                gameid INTEGER NOT NULL,
+                gameid INTEGER NOT NULL AUTO_INCREMENT,
                 username VARCHAR(64) NOT NULL,
                 numwom INTEGER NOT NULL,
                 numlost INTEGER NOT NULL,
