@@ -5,26 +5,23 @@ $action = $_POST['action'];
 
 if ($action == "Insert") {
     if ($username != "" && $password != "") {
-        $mysqli = new mysqli("localhost", "sienasel_sbxusr", "Sandbox@)!&", "sienasel_sandbox");
-        
+        require_once("functions.php");
+        $mysqli = db_connect();
+
         $insertQuery = "INSERT INTO Users50505 (username, password, gamesplayed) VALUES
         ('$username', '$password', '0')";
-        $existQuery = "SELECT username FROM Users50505 WHERE ' .$username ' = username";
+        $existQuery = "SELECT username FROM Users50505 WHERE username = '$username'";
 
         $previousUsers = $mysqli->query($existQuery);
-        if($previousUsers != false) {
+        // var_dump($previousUsers);
+        if ($previousUsers->num_rows == 0) {
             //RUNS QUERY THAT INSERTS USER IF USER ISN'T ALREADY THERE
             $mysqli->query($insertQuery);
-            $mysqli->close();
+            echo $username . " added to users.";
         } else {
-            echo $username . " is already taken";
-            die();
-            $mysqli->close();
+            echo "username " . $username . " is alredy taken.";
         }
-        // echo var_dump($_POST);
-        // //EXECUTES show_questions
-        // header("Location: http://www.sienasellbacks.com/bf08dell/Lab8/show_questions.php");
-        // die();
+        $mysqli->close();
     }
 }
 ?>
@@ -36,7 +33,7 @@ if ($action == "Insert") {
     <meta charset="utf-8">
     <meta name="viewport" content="width= device-width, initial-scale=1,
 shrink-to-fit=no">
-    <title>Add User</title>
+    <title>Insert User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 
@@ -47,8 +44,8 @@ shrink-to-fit=no">
         </label>
         <br>
         <label>Password:<br>
-            <input type="password" name="password" style="width: 70vh">
-        </label>
+            <input type="password" name="password" style="width: 60vh">
+        </label><br>
         <input type="submit" name="action" value="Insert">
     </form>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
