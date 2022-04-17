@@ -8,20 +8,18 @@ $c4 = $_POST['choice4'];
 $a = $_POST['answer'];
 $action = $_POST['action'];
 
-//CONNECTS TO DATABASE
-// echo var_dump($_POST);
-require_once("functions.php");
-$mysqli = db_connect();
-
 //IF WE ARE INSERTING A QUESTION
 if ($action == "Insert") {
     if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
-        //INSERT QUESTION INTO TABLE
-        $sql = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
-        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
-        $mysqli->query($sql);
+        //CONNECTS TO DATABASE
+        // echo var_dump($_POST);
+        require_once("functions.php");
+        $mysqli = db_connect();
 
-        // $mysqli->close();
+        //INSERT QUESTION INTO TABLE
+        $insertQuery = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
+        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
+        $mysqli->query($insertQuery);
 
         //EXECUTES show_questions
         $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
@@ -48,7 +46,7 @@ if ($action == "Insert") {
         $result->close();
         $mysqli->close();
 ?>
-         <!--Links back to Integrated Insert Questions -->
+        <!--Links back to Integrated Insert Questions -->
         <!DOCTYPE html>
         <html>
         <meta charset="utf-8">
