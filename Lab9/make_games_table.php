@@ -3,7 +3,8 @@ if($_GET['key'] != "505") {
     die("Access denied");
 }
 
-$mysqli = new mysqli("localhost", "sienasel_sbxusr", "Sandbox@)!&", "sienasel_sandbox");
+require_once("functions.php");
+$mysqli = db_connect();
 
 $sql = "CREATE TABLE Games50505 ( 
                 gameid INTEGER NOT NULL AUTO_INCREMENT,
@@ -11,10 +12,10 @@ $sql = "CREATE TABLE Games50505 (
                 numwom INTEGER NOT NULL,
                 numlost INTEGER NOT NULL,
                 PRIMARY KEY (gameid),
-                FOREIGN KEY (username) REFERENCES Users (username)
+                FOREIGN KEY (username) REFERENCES Users50505(username)
                 )";
 
 
-$mysqli ->query($sql);
+$mysqli->query($sql);
 $mysqli->close();
 ?>

@@ -1,10 +1,6 @@
 <?php
-$mysqli = new mysqli(
-    "localhost",
-    "sienasel_sbxusr",
-    "Sandbox@)!&",
-    "sienasel_sandbox"
-);
+require_once("functions.php");
+$mysqli = db_connect();
 
 $result = $mysqli->query("SHOW COLUMNS FROM Users50505");
 echo
