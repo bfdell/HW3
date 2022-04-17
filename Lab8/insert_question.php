@@ -9,18 +9,14 @@ $action = $_POST['action'];
 
 if ($action == "Insert") {
     if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
-        $sql = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
+        $insertQuery = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
         ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
 
         // echo var_dump($_POST);
         require_once("functions.php");
         $mysqli = db_connect();
-        $mysqli->query($sql);
+        $mysqli->query($insertQuery);
         $mysqli->close();
-
-        //EXECUTES show_questions
-        header("Location: http://www.sienasellbacks.com/bf08dell/Lab8/show_questions.php");
-        die();
     }
 }
 ?>
