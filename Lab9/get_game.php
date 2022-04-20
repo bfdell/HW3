@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +17,10 @@ $mysqli = db_connect();
 $numQuestions = 5;
 $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
 $questions = $mysqli->query($questionsQuery);
-for ($i = 0; $i < $numQuestions; $i++) {
 
+    $i = 0;
     while ($question = $questions->fetch_assoc()) {
-        echo "<form method=\"post\" action=\"get_game.php\">";
+        echo "<form method=\"post\" action=\"process_game.php\">";
 
         echo "<label>{$question['question']}<br>
         </label><br>
@@ -41,11 +44,13 @@ for ($i = 0; $i < $numQuestions; $i++) {
             <input type=\"radio\" name=\"answer\" value=\"4\">
             </label>
         </div>
-        <input type=\"submit\" name=\"action\" value=\"Next\">";
+        <input type=\"submit\" name=\"action\" value=\"Question " . $i + 1 ."\">";
 
         echo "</form><br>";
+        $_SESSION["Question ". ($i + 1)] =  $question['question'];
+        $i++;
     }
-}
+
 $questions->close();
 $mysqli->close();
 
