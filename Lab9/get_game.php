@@ -54,8 +54,6 @@ echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
     </form><br>";
 
 $questions->close();
-
-$createGameQuery = "INSERT INTO Games50505('username', 'numwon', 'numlost') VALUES ('brian' '0', '0')";
 $mysqli->close();
 
 ?>
