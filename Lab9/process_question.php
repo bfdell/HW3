@@ -8,7 +8,7 @@ require_once("functions.php");
 $mysqli = db_connect();
 
 $answerQuery = "SELECT answer FROM Questions50505 WHERE question = '$question'";
-$answer = $mysqli->query($answerQuery);
+$answer = $mysqli->query($answerQuery)->fetch_array()[0];
 
 if($answer == $choice) {
     echo "Correct answer!";
