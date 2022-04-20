@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,15 +11,14 @@ session_start();
 require_once("functions.php");
 $mysqli = db_connect();
 
+//Gets 5 random questions
 $numQuestions = 5;
 $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
 $questions = $mysqli->query($questionsQuery);
 
-echo "<form method=\"post\" action=\"process_game.php\">";
+echo "<form method=\"post\" action=\"get_game.php\">";
 $i = 0;
-$questionsArr = array();
 while ($question = $questions->fetch_assoc()) {
-
     echo "<label>{$question['question']}<br>
         </label><br>
         <div class=\"questionfield\">
@@ -45,14 +41,9 @@ while ($question = $questions->fetch_assoc()) {
             <input type=\"radio\" name=\"answer$i\" value=\"4\">
             </label>
         </div><br>";
-
-    $questionsArr["question$i"] = $question['question'];
     $i++;
 }
-$_SESSION['questions'] = $questionsArr;
-echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
-    </form><br>";
-
+echo "<input type=\"submit\" name=\"action\" value=\"Submit\"> </form>";
 $questions->close();
 $mysqli->close();
 
