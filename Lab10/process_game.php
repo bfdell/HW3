@@ -17,15 +17,18 @@ for ($i = 0; $i < count($questions); $i++) {
     $answer = $mysqli->query($answerQuery)->fetch_array()[0];
 
     //Validates question
+    echo "<strong>Question " . $i + 1 .":</strong> Correct answer: $answer &nbsp Your answer: $userChoice ";
     if ($answer == $userChoice) {
-        // echo "Correct answer!  ";
+        echo "<strong>CORRECT</strong>";
         $numwon++;
     } else {
-        // echo "Incorrect... correct answer: " . $answer . "  ";
+        echo " <strong>INCORRECT</strong>";
         $numlost++;
     }
-    echo "STATUS (w, l): ". $numwon . "  " . $numlost . " <br>";
+    echo "<br>Correct: ". $numwon . " Incorrect: " . $numlost . " <br>";
 }
 //Inserts game into table with  numwon and lost
+//Print insert message
+echo "<br>GAME INSERTED INTO TABLE";
 $insertGameQuery = "INSERT INTO Games50505 (username, numwon, numlost) VALUES ('brian', '$numwon', '$numlost')";
 $mysqli->query($insertGameQuery);
