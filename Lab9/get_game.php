@@ -16,8 +16,12 @@ $questions = $mysqli->query($questionsQuery);
 for($i = 0; $i < $numQuestions; $i++) {
 
     while($question = $questions->fetch_assoc()) {
-        var_dump($question);
-        echo "<br>";
+        echo "<form method=\"post\" action=\"get_qame.php\">";
+
+        echo "<label>{$question['question']}<br>
+        </label>";
+
+        echo "</form>";
     }
 }
 // $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
