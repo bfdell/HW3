@@ -46,7 +46,7 @@ while ($question = $questions->fetch_assoc()) {
             </label>
         </div><br>";
 
-    $questionsArr["Question $i"] = $question['question'];
+    $questionsArr["question$i"] = $question['question'];
     $i++;
 }
 $_SESSION['questions'] = $questionsArr;
