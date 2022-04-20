@@ -9,7 +9,7 @@ $mysqli = db_connect();
 $sql = "CREATE TABLE Games50505 ( 
                 gameid INTEGER NOT NULL AUTO_INCREMENT,
                 username VARCHAR(64) NOT NULL,
-                numwom INTEGER NOT NULL,
+                numwon INTEGER NOT NULL,
                 numlost INTEGER NOT NULL,
                 PRIMARY KEY (gameid),
                 FOREIGN KEY (username) REFERENCES Users50505(username)
