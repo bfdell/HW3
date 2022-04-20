@@ -13,7 +13,7 @@ $c3 = $row[3];
 $c4 = $row[4];
 
 //Stores question text in session
-$_SESSION['question'];
+$_SESSION['question'] = $q;
 ?>
 
 <!DOCTYPE html>
