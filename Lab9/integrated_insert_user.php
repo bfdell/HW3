@@ -73,11 +73,11 @@ if ($action == "Insert") {
     <body>
         <form method="post" action="integrated_insert_user.php">
             <label>Username:<br>
-                <input type="text" name="username" style="width: 60vh">
+                <input type="text" name="username" required style="width: 60vh">
             </label>
             <br>
             <label>Password:<br>
-                <input type="password" name="password" style="width: 60vh">
+                <input type="password" name="password" required style="width: 60vh">
             </label><br>
             <input type="submit" name="action" value="Insert">
         </form>
