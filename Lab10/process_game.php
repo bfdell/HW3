@@ -30,5 +30,6 @@ for ($i = 0; $i < count($questions); $i++) {
 //Inserts game into table with  numwon and lost
 //Print insert message
 echo "<br>GAME INSERTED INTO TABLE";
-$insertGameQuery = "INSERT INTO Games50505 (username, numwon, numlost) VALUES ('brian', '$numwon', '$numlost')";
+$insertGameQuery = "INSERT INTO Games50505 (username, numwon, numlost) VALUES ('Juan', '$numwon', '$numlost')";
 $mysqli->query($insertGameQuery);
+$mysqli->close();
