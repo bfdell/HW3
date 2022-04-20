@@ -54,7 +54,7 @@ if ($action == "Insert") {
         <title>Integrated Insert User</title>
 
         <body>
-            <a href="integrated_insert_user">Insert another user</a>
+            <a href="integrated_insert_user.php">Insert another user</a>
         </body>
 
         </html>
