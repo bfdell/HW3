@@ -18,40 +18,44 @@ $numQuestions = 5;
 $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
 $questions = $mysqli->query($questionsQuery);
 
-    $i = 0;
-    while ($question = $questions->fetch_assoc()) {
-        echo "<form method=\"post\" action=\"process_game.php\">";
+echo "<form method=\"post\" action=\"process_game.php\">";
+$i = 0;
+$questionsArr = array();
+while ($question = $questions->fetch_assoc()) {
 
-        echo "<label>{$question['question']}<br>
+    echo "<label>{$question['question']}<br>
         </label><br>
         <div class=\"questionfield\">
             <label>{$question['choice1']}<br>
-            <input type=\"radio\" name=\"answer\" value=\"1\">
+            <input type=\"radio\" name=\"answer$i\" value=\"1\">
             </label>
         </div>
         <div class=\"questionfield\">
             <label>{$question['choice2']}<br>
-            <input type=\"radio\" name=\"answer\" value=\"2\">
+            <input type=\"radio\" name=\"answer$i\" value=\"2\">
             </label>
         </div>
         <div class=\"questionfield\">
             <label>{$question['choice3']}<br>
-            <input type=\"radio\" name=\"answer\" value=\"3\">
+            <input type=\"radio\" name=\"answer$i\" value=\"3\">
             </label>
         </div>
         <div class=\"questionfield\">
             <label>{$question['choice4']}<br>
-            <input type=\"radio\" name=\"answer\" value=\"4\">
+            <input type=\"radio\" name=\"answer$i\" value=\"4\">
             </label>
-        </div>
-        <input type=\"submit\" name=\"action\" value=\"Question " . $i + 1 ."\">";
+        </div><br>";
 
-        echo "</form><br>";
-        $_SESSION["Question ". ($i + 1)] =  $question['question'];
-        $i++;
-    }
+    $questionsArr["Question $i"] = $question['question'];
+    $i++;
+}
+$_SESSION['questions'] = $questionsArr;
+echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
+    </form><br>";
 
 $questions->close();
+
+$createGameQuery = "INSERT INTO Games50505('username', 'numwon', 'numlost') VALUES ('brian' '0', '0')";
 $mysqli->close();
 
 ?>
