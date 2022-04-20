@@ -10,14 +10,6 @@
 <?php
 require_once("functions.php");
 $mysqli = db_connect();
-$query = "SELECT question, choice1, choice2, choice3, choice4 FROM Questions50505 ORDER BY RAND()";
-$result = $mysqli->query($query);
-$row = $result->fetch_row();
-$q = $row[0];
-$c1 = $row[1];
-$c2 = $row[2];
-$c3 = $row[3];
-$c4 = $row[4];
 
 $numQuestions = 5;
 $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
