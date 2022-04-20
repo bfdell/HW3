@@ -11,7 +11,7 @@ $c3 = $row[3];
 $c4 = $row[4];
 
 $numQuestions = 5;
-$questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT '$numQuestions'";
+$questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
 $questions = $mysqli->query($questionsQuery);
 for($i = 0; $i < $numQuestions; $i++) {
 
