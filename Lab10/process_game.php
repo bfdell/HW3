@@ -2,7 +2,7 @@
 session_start();
 require_once("functions.php");
 if (!isset($_SESSION['username'])) {
-   echo "<h2>You must be logged in to play a game</h2>";
+   echo "<h2>You must be logged in to process a game</h2>";
 } else {
     authenticate();
 }
