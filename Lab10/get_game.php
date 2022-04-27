@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['username'])) {
+    die("You must be logged in to play a game");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,20 +13,22 @@ session_start();
     <title>Get Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
-<?php
-require_once("functions.php");
-$mysqli = db_connect();
 
-$numQuestions = 5;
-$questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
-$questions = $mysqli->query($questionsQuery);
+<body>
+    <?php
+    require_once("functions.php");
+    $mysqli = db_connect();
 
-echo "<form method=\"post\" action=\"process_game.php\">";
-$i = 0;
-$questionsArr = array();
-while ($question = $questions->fetch_assoc()) {
+    $numQuestions = 5;
+    $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
+    $questions = $mysqli->query($questionsQuery);
 
-    echo "<label>{$question['question']}<br>
+    echo "<form method=\"post\" action=\"process_game.php\">";
+    $i = 0;
+    $questionsArr = array();
+    while ($question = $questions->fetch_assoc()) {
+
+        echo "<label>{$question['question']}<br>
         </label><br>
         <div class=\"questionfield\">
             <label>{$question['choice1']}<br>
@@ -46,22 +51,22 @@ while ($question = $questions->fetch_assoc()) {
             </label>
         </div><br>";
 
-    $questionsArr["question$i"] = $question['question'];
-    $i++;
-}
-$_SESSION['questions'] = $questionsArr;
-echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
+        $questionsArr["question$i"] = $question['question'];
+        $i++;
+    }
+    $_SESSION['questions'] = $questionsArr;
+    echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
     </form><br>";
 
-$questions->close();
-$mysqli->close();
-
-?>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js ">
-</script>
+    $questions->close();
+    $mysqli->close();
+    ?>
+    <a href="login.php">Options Menu</a>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js ">
+    </script>
 </body>
 
 </html>

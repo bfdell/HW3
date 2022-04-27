@@ -26,8 +26,7 @@ if ($action == "Insert") {
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width= device-width, initial-scale=1,
-shrink-to-fit=no">
+    <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
     <title>Insert Question</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
