@@ -2,7 +2,7 @@
 session_start();
 require_once("functions.php");
 if (!isset($_SESSION['username'])) {
-   echo "<h2>You must be logged in to process a game</h2>";
+    echo "<h2>You must be logged in to process a game</h2>";
 } else {
     authenticate();
 }
@@ -21,11 +21,12 @@ if (!isset($_SESSION['username'])) {
 <body>
     <?php
     require_once("functions.php");
-    $mysqli = db_connect();
     if (isset($_POST['action'])) {
+        $mysqli = db_connect();
         $numwon = 0;
         $numlost = 0;
         $questions = $_SESSION['questions'];
+        echo "<div id=\"resultdata\">";
         for ($i = 0; $i < count($questions); $i++) {
             //Gets question and user's answer
             $question  = $questions["question$i"];
@@ -48,8 +49,8 @@ if (!isset($_SESSION['username'])) {
         }
         //Print insert message
         $user = $_SESSION['username'];
-        echo "<br>GAME INSERTED INTO TABLE FOR USER: $user";
-
+        echo "<br><strong>GAME INSERTED INTO TABLE FOR USER: $user</strong>";
+        echo "</div>";
         //Increments amount of games played for user in users table
         $incrementPlayedQuery = "UPDATE Users50505 SET gamesplayed = gamesplayed + 1 WHERE username = '$user'";
         $mysqli->query($incrementPlayedQuery);
@@ -65,6 +66,7 @@ if (!isset($_SESSION['username'])) {
     ?>
     <br>
     <a href="get_game.php">Play New Game</a>
+    <a href="login.php">Options Menu</a>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
     </script>

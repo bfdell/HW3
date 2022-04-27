@@ -61,7 +61,7 @@ function authenticate()
     $confirmUserQuery = "SELECT username FROM Users50505 WHERE username = '$sessionusername'";
     $userExist = $mysqli->query($confirmUserQuery)->num_rows == 1;
     if (!$userExist) {
-        echo "<h2 id=\"deleted_user_error\">Previously logged in user \"$sessionusername\" has since been deleted: Please login to a different account.</h2>";
+        echo "<h2 id=\"deleted_user_error\">Previously logged in user \"$sessionusername\" has since been deleted: Please logout, then login to a different account.</h2>";
     } else {
         echo "<h2>Welcome $sessionusername</h2>";
     }

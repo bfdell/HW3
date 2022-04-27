@@ -10,42 +10,7 @@ $action = $_POST['action'];
 
 //IF WE ARE INSERTING A QUESTION
 if ($action == "Insert") {
-    if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") {
-        //CONNECTS TO DATABASE
-        // echo var_dump($_POST);
-        require_once("functions.php");
-        $mysqli = db_connect();
-
-        //INSERT QUESTION INTO TABLE
-        $insertQuery = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
-        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
-        $mysqli->query($insertQuery);
-
-        //EXECUTES show_questions
-        $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
-        echo
-        '<table>';
-        echo
-        '<tr>';
-        // echo var_dump($result);
-        while ($row = $result->fetch_row()) {
-            echo '<th>' . $row[0] . '</th>';
-        }
-        echo '</tr>';
-        $result->close();
-        $result = $mysqli->query("SELECT * FROM Questions50505");
-
-        while ($row = $result->fetch_row()) {
-            echo '<tr>';
-            foreach ($row as $value) {
-                echo '<td>' . $value . '</td>';
-            }
-            echo '</tr>';
-        }
-        echo '</table>';
-        $result->close();
-        $mysqli->close();
-?>
+    if ($q != "" && $c1 != "" && $c2 != "" && $c3 != "" && $c4 != "" && $a != "") { ?>
         <!--Links back to Integrated Insert Questions -->
         <!DOCTYPE html>
         <html lang="en">
@@ -53,12 +18,50 @@ if ($action == "Insert") {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
-            <title>Insert Question</title>
+            <title>Create Question</title>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
             <link rel="stylesheet" href="style.css">
         </head>
 
         <body>
+            <header>
+                <h1>All Questions</h1>
+            </header>
+            <hr>
+            <?php
+            require_once("functions.php");
+            $mysqli = db_connect();
+
+            //INSERT QUESTION INTO TABLE
+            $insertQuery = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
+        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
+            $mysqli->query($insertQuery);
+
+            //EXECUTES show_questions
+            $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
+            echo
+            '<table>';
+            echo
+            '<tr>';
+            // echo var_dump($result);
+            while ($row = $result->fetch_row()) {
+                echo '<th>' . $row[0] . '</th>';
+            }
+            echo '</tr>';
+            $result->close();
+            $result = $mysqli->query("SELECT * FROM Questions50505");
+
+            while ($row = $result->fetch_row()) {
+                echo '<tr>';
+                foreach ($row as $value) {
+                    echo '<td>' . $value . '</td>';
+                }
+                echo '</tr>';
+            }
+            echo '</table>';
+            $result->close();
+            $mysqli->close();
+            ?>
             <a href="integrated_insert_question.php">Insert Another Question</a>
             <br>
             <a href="admin.php">Admin</a>
@@ -79,12 +82,16 @@ if ($action == "Insert") {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Insert Question</title>
+        <title>Create Question</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+        <header>
+            <h1>Create Question</h1>
+        </header>
+        <hr>
         <form method="post" action="integrated_insert_question.php">
             <label>Question<br>
                 <input type="text" name="question" style="width: 70vh">

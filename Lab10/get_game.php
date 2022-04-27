@@ -1,10 +1,12 @@
 <?php
 session_start();
 require_once("functions.php");
+$userExist = true;
 if (!isset($_SESSION['username'])) {
-    die("You must be logged in to play a game");
+    echo "<h2>You must be logged in to play a game</h2>";
+    $userExist = false;
 } else {
-    authenticate();
+    $userExist = authenticate();
 }
 ?>
 <!DOCTYPE html>
@@ -21,17 +23,17 @@ if (!isset($_SESSION['username'])) {
 <body>
     <?php
     $mysqli = db_connect();
+    if ($userExist) {
+        $numQuestions = 5;
+        $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
+        $questions = $mysqli->query($questionsQuery);
 
-    $numQuestions = 5;
-    $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
-    $questions = $mysqli->query($questionsQuery);
+        echo "<form method=\"post\" action=\"process_game.php\">";
+        $i = 0;
+        $questionsArr = array();
+        while ($question = $questions->fetch_assoc()) {
 
-    echo "<form method=\"post\" action=\"process_game.php\">";
-    $i = 0;
-    $questionsArr = array();
-    while ($question = $questions->fetch_assoc()) {
-
-        echo "<label>{$question['question']}
+            echo "<label>{$question['question']}
         </label>
         <div class=\"questionfield\">
             <label>{$question['choice1']}
@@ -54,15 +56,16 @@ if (!isset($_SESSION['username'])) {
             </label>
         </div>";
 
-        $questionsArr["question$i"] = $question['question'];
-        $i++;
-    }
-    $_SESSION['questions'] = $questionsArr;
-    echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
-    </form><br>";
+            $questionsArr["question$i"] = $question['question'];
+            $i++;
+        }
+        $_SESSION['questions'] = $questionsArr;
+        echo "<input type=\"submit\" name=\"action\" value=\"Submit\">
+        </form><br>";
 
-    $questions->close();
-    $mysqli->close();
+        $questions->close();
+        $mysqli->close();
+    }
     ?>
     <a href="login.php">Options Menu</a>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

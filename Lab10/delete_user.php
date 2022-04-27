@@ -17,6 +17,7 @@ session_start();
     <header>
         <h1>Delete User</h1>
     </header>
+    <hr>
 
     <?php
     require_once("functions.php");
@@ -29,7 +30,7 @@ session_start();
 
         $deleteUserQuery = "DELETE FROM Users50505 WHERE username = '$username'";
         $mysqli->query($deleteUserQuery);
-        echo "Successfully deleted the user $username";
+        echo "<h2>Successfully deleted the user \"$username\"</h2>";
 
         $mysqli->close();
     }

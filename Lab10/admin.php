@@ -5,6 +5,7 @@ session_start();
 <html lang="en">
 
 <head>
+    <!-- //ADD ADMIN AUTHENITCATOIN -->
     <meta charset="utf-8">
     <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin</title>
@@ -24,6 +25,7 @@ session_start();
     echo "<a href=\"show_questions.php\">Show all Questions</a>";
     echo "<a href=\"delete_question.php\">Delete Question</a>";
     echo "<a href=\"delete_user.php\">Delete User</a>";
+    echo "<br><a href=\"login.php\">Options Menu</a>";
     ?>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">

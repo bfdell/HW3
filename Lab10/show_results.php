@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Show results</title>
+    <title>Show Results</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,6 +16,7 @@ session_start();
     <header>
         <h1>Game Stats</h1>
     </header>
+    <hr>
     <?php
     echo "<table>
     <tr>

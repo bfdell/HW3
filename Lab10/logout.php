@@ -18,8 +18,14 @@ unset($_SESSION);
     <header>
         <h1>Logout</h1>
     </header>
+    <hr>
     <h2>Logged out and session destroyed</h2>
     <a href="login.php">Login</a>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js ">
+    </script>
 </body>
 
 </html>

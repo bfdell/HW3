@@ -16,6 +16,7 @@ session_start();
     <header>
         <h1>Delete Question</h1>
     </header>
+    <hr>
 
     <?php
     require_once("functions.php");
@@ -26,7 +27,7 @@ session_start();
 
         $deleteQuestionQuery = "DELETE FROM Questions50505 WHERE question = '$question'";
         $mysqli->query($deleteQuestionQuery);
-        echo "Successfully deleted the question $question";
+        echo "<h2>Successfully deleted the question \"$question\"</h2>";
 
         $mysqli->close();
     }

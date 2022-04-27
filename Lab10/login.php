@@ -13,19 +13,22 @@ session_start();
 </head>
 
 <body>
-    <header>
-        <h1>Login</h1>
-    </header>
-    <hr>
     <?php
     require_once("functions.php");
     $mysqli = db_connect();
     $userExist = false;
     if (isset($_SESSION['username'])) {
+        echo "<header>
+                <h1>Options Menu</h1>
+             </header><hr>";
         $userExist = authenticate();
     }
+    //DONT LOGIN IF ALREADY LOGGED IN (TO ADD!)
     if (!$userExist) {
         if (!isset($_POST['login'])) {
+            echo "<header>
+                    <h1>Login</h1>
+                 </header><hr>";
             echo "<form id=\"logininfo\" method=\"post\" action=\"login.php\">
         <label for=\"username\"> <strong>Username:</strong><br>
         <input type=\"text\" name=\"username\" id=\"username\" placeholder=\"Username\" required>
@@ -56,6 +59,9 @@ session_start();
                         }
                     </script>
     <?php
+                    echo "<header>
+                    <h1>Options Menu</h1> 
+                    </header> <hr>";
                     echo "<h2>Welcome {$_SESSION['username']}</h2>";
                     echo "<a href=\"get_game.php\">Play Game</a>";
                     echo "<a href=\"show_results.php\">Show Statistics</a>";
@@ -74,6 +80,7 @@ session_start();
     } else {
         echo "<a href=\"get_game.php\">Play Game</a>";
         echo "<a href=\"show_results.php\">Show Statistics</a>";
+        echo "<a href=\"admin.php\">Admin</a>";
         echo "<a href=\"logout.php\">Logout</a>";
     }
     ?>
