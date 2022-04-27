@@ -165,6 +165,7 @@ session_start();
                     echo "<h2>Welcome {$_SESSION['username']}</h2>";
                     echo "<a href=\"get_game.php\">Play Game</a>";
                     echo "<a href=\"show_results.php\">Show Statistics</a>";
+                    echo "<a href=\"logout.php\">Logout</a>";
                 } else {
                     echo "<header><h1>Login failed: either username or password is incorrect</h1></header>";
                     echo "<a href=\"login.php\">Try Again</a>";
@@ -178,7 +179,6 @@ session_start();
         }
     }
     ?>
-    <a href="logout.php">Logout</a>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
     </script>

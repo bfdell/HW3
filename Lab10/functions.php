@@ -49,6 +49,7 @@ function authenticate()
         echo "<h2>Welcome $sessionusername</h2>";
         echo "<a href=\"get_game.php\">Play Game</a>";
         echo "<a href=\"show_results.php\">Show Statistics</a>";
+        echo "<a href=\"logout.php\">Logout</a>";
     }
 
     return $userExist;
