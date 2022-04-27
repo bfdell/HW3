@@ -128,7 +128,6 @@ if (!isset($_SESSION['username'])) {
     require_once("functions.php");
     $mysqli = db_connect();
     if (isset($_POST['action'])) {
-        echo "PROCESSING";
         $numwon = 0;
         $numlost = 0;
         $questions = $_SESSION['questions'];
