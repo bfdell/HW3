@@ -102,3 +102,11 @@ a:active,
 .smallbox button:active {
     color: rgb(255, 255, 255);
 }
+
+table {
+    margin: auto;
+}
+
+.questionfield label {
+    width: 40vh;
+}
