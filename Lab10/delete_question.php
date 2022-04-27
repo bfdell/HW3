@@ -25,7 +25,7 @@ session_start();
         $question = $_POST['question'];
 
         $deleteQuestionQuery = "DELETE FROM Questions50505 WHERE question = '$question'";
-        $mysqli->query($deleteUserQuery);
+        $mysqli->query($deleteQuestionQuery);
         echo "Successfully deleted the question $question";
 
         $mysqli->close();
