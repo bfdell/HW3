@@ -18,10 +18,10 @@ session_start();
     </header>
     <hr>
     <?php
-    echo "<a href=\"\">Create User</a>";
-    echo "<a href=\"\">Show all Users</a>";
-    echo "<a href=\"\">Create Question</a>";
-    echo "<a href=\"\">Show all Questions</a>";
+    echo "<a href=\"integrated_insert_user.php\">Create User</a>";
+    echo "<a href=\"show_users.php\">Show all Users</a>";
+    echo "<a href=\"integrated_insert_question.php\">Create Question</a>";
+    echo "<a href=\"show_questions.php\">Show all Questions</a>";
     echo "<a href=\"delete_question.php\">Delete Question</a>";
     echo "<a href=\"delete_user.php\">Delete User</a>";
     ?>
