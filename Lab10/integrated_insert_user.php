@@ -51,7 +51,7 @@ if ($action == "Insert") {
         <!DOCTYPE html>
         <html>
         <meta charset="utf-8">
-        <title>Integrated Insert User</title>
+        <title>Insert User</title>
         <link rel="stylesheet" href="style.css">
 
         <body>
@@ -69,7 +69,7 @@ if ($action == "Insert") {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Integrated Insert User</title>
+        <title>Insert User</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>

@@ -26,16 +26,25 @@ echo '</table>';
 $result->close();
 $mysqli->close();
 ?>
-
 <!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<title>Show Questions</title>
-<link rel="stylesheet" href="style.css">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Show Questions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
     <br>
     <a href="admin.php">Admin</a>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js ">
+    </script>
 </body>
 
 </html>
