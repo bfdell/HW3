@@ -1,6 +1,6 @@
 body {
     min-height: 100vh;
-    background-image: linear-gradient(to bottom, rgb(168, 213, 255), #140558);
+    background-image: linear-gradient(to bottom, rgb(252, 253, 192), #ffbb0e);
     min-width: 610px;
 }
 
@@ -48,11 +48,11 @@ label input {
 
 label input:hover,
 #submitinfo:hover, input[type="submit"]:hover {
-    border-color: rgb(34, 0, 255);
+    border-color: rgb(219, 110, 93);
 }
 
 #submitinfo:active, input[type="submit"]:active {
-    background-color: rgb(115, 144, 223);
+    background-color: rgb(179, 40, 5);
     color: white;
     font-weight: bold;
 }
@@ -83,18 +83,19 @@ a {
     text-decoration: none;
     padding: 7px;
     border-radius: 30px;
-    background-color: blue;
+    /* background-color: blue; */
+    background-color: rgb(219, 110, 93);
     color: black;
 }
 
 a:visited,
 .smallbox button:visited {
-    color: cyan;
+    color: rgb(89, 56, 0);
 }
 
 a:hover,
 .smallbox button:hover {
-    background-color: lightblue;
+    background-color: rgb(255, 223, 192);
     transition: .1s;
 }
 
