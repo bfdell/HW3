@@ -33,6 +33,23 @@ function get_users()
     return $usernames;
 }
 
+function get_questions() {
+     //Connect to database
+     $mysqli = db_connect();
+
+     //Gets all questions and stores them in questions array
+     $questionsQuery = "SELECT question FROM Questions50505";
+     $questions = $mysqli->query($questionsQuery);
+     $questionsArr = array();
+     while ($question = $questions->fetch_row()) {
+         array_push($questionsArr, $question[0]);
+     }
+     $questions->close();
+     $mysqli->close();
+ 
+     return $questionsArr;
+}
+
 function authenticate()
 {
     //Connect to database
