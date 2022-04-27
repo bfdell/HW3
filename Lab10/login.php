@@ -39,7 +39,7 @@ session_start();
             $username = $_POST['username'];
             $enteredPassword = $_POST['password'];
 
-            $passwordQuery = "SELECT password FROM users50505 WHERE username = '$username'";
+            $passwordQuery = "SELECT password FROM Users50505 WHERE username = '$username'";
             $passwordResult = $mysqli->query($passwordQuery);
 
             if ($passwordResult->num_rows > 0) {
