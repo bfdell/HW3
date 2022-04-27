@@ -1,8 +1,6 @@
 <?php session_start();
 session_destroy();
-
 unset($_SESSION);
-die("Session Destroyed");
 ?>
 
 <!DOCTYPE html>
@@ -125,5 +123,8 @@ die("Session Destroyed");
     <header>
         <h1>Logout</h1>
     </header>
-        <a href="login.php">Login</a>
+    <h2>Logged out and session destroyed<h2>
+            <a href="login.php">Login</a>
 </body>
+
+</html>
