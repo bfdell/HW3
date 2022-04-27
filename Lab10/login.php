@@ -18,7 +18,6 @@ session_start();
     </header>
     <hr>
     <?php
-    //ADD AUTHENTICATE TO ALL PLACES UNDER SESSION
     require_once("functions.php");
     $mysqli = db_connect();
     $userExist = false;
