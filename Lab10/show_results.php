@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("functions.php");
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,43 +20,47 @@ session_start();
     </header>
     <hr>
     <?php
-    echo "<table>
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
+    if ($loginStatus == "verified") {
+        echo "<table>
     <tr>
     <th>Username</th>
     <th>Total Won</th>
     <th>Total Lost</th>
     <th>Games Played</th>
     </tr>";
-    require_once("functions.php");
-    $mysqli = db_connect();
+        require_once("functions.php");
+        $mysqli = db_connect();
 
-    //Gets all usernames
-    $usernames = get_users();
+        //Gets all usernames
+        $usernames = get_users();
 
-    //Outputs game data for each user in table
-    foreach ($usernames as $username) {
-        //Gets all games played by specific user
-        $userGamesQuery = "SELECT * FROM Games50505 WHERE username = '$username'";
-        $games = $mysqli->query($userGamesQuery);
+        //Outputs game data for each user in table
+        foreach ($usernames as $username) {
+            //Gets all games played by specific user
+            $userGamesQuery = "SELECT * FROM Games50505 WHERE username = '$username'";
+            $games = $mysqli->query($userGamesQuery);
 
-        //If user has played games, find and output stats
-        $gamesPlayed = $games->num_rows;
-        if ($gamesPlayed > 0) {
-            $numWon = 0;
-            $numLost = 0;
-            foreach ($games as $game) {
-                $numWon += $game['numwon'];
-                $numLost += $game['numlost'];
-            }
-            echo "<tr>
+            //If user has played games, find and output stats
+            $gamesPlayed = $games->num_rows;
+            if ($gamesPlayed > 0) {
+                $numWon = 0;
+                $numLost = 0;
+                foreach ($games as $game) {
+                    $numWon += $game['numwon'];
+                    $numLost += $game['numlost'];
+                }
+                echo "<tr>
                 <th>$username</th>
                 <td>$numWon</td>
                 <td>$numLost</td>
                 <td>$gamesPlayed</td>";
+            }
         }
+        $games->close();
+        $mysqli->close();
     }
-    $games->close();
-    $mysqli->close();
     ?>
     </table>
     <a href="login.php">Options Menu</a>

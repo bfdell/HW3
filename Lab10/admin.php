@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("functions.php");
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +21,18 @@ session_start();
     </header>
     <hr>
     <?php
-    echo "<a href=\"integrated_insert_user.php\">Create User</a>";
-    echo "<a href=\"show_users.php\">Show all Users</a>";
-    echo "<a href=\"integrated_insert_question.php\">Create Question</a>";
-    echo "<a href=\"show_questions.php\">Show all Questions</a>";
-    echo "<a href=\"delete_question.php\">Delete Question</a>";
-    echo "<a href=\"delete_user.php\">Delete User</a>";
-    echo "<br><a href=\"login.php\">Options Menu</a>";
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
+
+    if ($loginStatus == "verified") {
+        echo "<a href=\"integrated_insert_user.php\">Create User</a>";
+        echo "<a href=\"show_users.php\">Show all Users</a>";
+        echo "<a href=\"integrated_insert_question.php\">Create Question</a>";
+        echo "<a href=\"show_questions.php\">Show all Questions</a>";
+        echo "<a href=\"delete_question.php\">Delete Question</a>";
+        echo "<a href=\"delete_user.php\">Delete User</a>";
+        echo "<br><a href=\"login.php\">Options Menu</a>";
+    }
     ?>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
