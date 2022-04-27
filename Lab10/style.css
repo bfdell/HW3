@@ -47,17 +47,17 @@ label input {
 }
 
 label input:hover,
-#submitinfo:hover {
+#submitinfo:hover, input[type="submit"]:hover {
     border-color: rgb(34, 0, 255);
 }
 
-#submitinfo:active {
+#submitinfo:active, input[type="submit"]:active {
     background-color: rgb(115, 144, 223);
     color: white;
     font-weight: bold;
 }
 
-#submitinfo {
+#submitinfo, input[type="submit"]{
     padding: 10px 10px;
     margin-top: 15px;
     font-size: 1.5em;
