@@ -123,8 +123,8 @@ unset($_SESSION);
     <header>
         <h1>Logout</h1>
     </header>
-    <h2>Logged out and session destroyed<h2>
-            <a href="login.php">Login</a>
+    <h2>Logged out and session destroyed</h2>
+    <a href="login.php">Login</a>
 </body>
 
 </html>

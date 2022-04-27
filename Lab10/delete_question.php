@@ -1,6 +1,5 @@
 <?php
 session_start();
-//Add authentication
 ?>
 <!DOCTYPE html>
 <html lang="en">
