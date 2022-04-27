@@ -177,6 +177,10 @@ session_start();
             }
             $mysqli->close();
         }
+    } else {
+        echo "<a href=\"get_game.php\">Play Game</a>";
+        echo "<a href=\"show_results.php\">Show Statistics</a>";
+        echo "<a href=\"logout.php\">Logout</a>";
     }
     ?>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
