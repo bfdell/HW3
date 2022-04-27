@@ -123,7 +123,7 @@ session_start();
     echo "<a href=\"\">Show all Users</a>";
     echo "<a href=\"\">Create Question</a>";
     echo "<a href=\"\">Show all Questions</a>";
-    echo "<a href=\"\">Delete Question</a>";
+    echo "<a href=\"delete_question.php\">Delete Question</a>";
     echo "<a href=\"delete_user.php\">Delete User</a>";
     ?>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
