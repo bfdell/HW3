@@ -32,7 +32,6 @@ if ($action == "Insert") {
             $existQuery = "SELECT username FROM Users50505 WHERE username = '$username'";
 
             $previousUsers = $mysqli->query($existQuery);
-            // var_dump($previousUsers);
             if ($previousUsers->num_rows == 0) {
                 //RUNS QUERY THAT INSERTS USER IF USER ISN'T ALREADY THERE
                 $mysqli->query($insertQuery);
@@ -47,7 +46,7 @@ if ($action == "Insert") {
             '<table>';
             echo
             '<tr>';
-            // echo var_dump($result);
+
             while ($row = $result->fetch_row()) {
                 echo '<th>' . $row[0] . '</th>';
             }

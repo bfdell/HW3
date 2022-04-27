@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("functions.php");
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,32 +15,31 @@ session_start();
 </head>
 
 <body>
+    <header>
+        <h1><?php echo $loginStatus == false ? "Login" : "Options Menu"; ?></h1>
+    </header>
+    <hr>
     <?php
-    require_once("functions.php");
-    $mysqli = db_connect();
-    $userExist = false;
-    if (isset($_SESSION['username'])) {
-        echo "<header>
-                <h1>Options Menu</h1>
-             </header><hr>";
-        $userExist = authenticate();
+
+    if ($loginStatus != false) {
+        $message = getWelcomeMessage($loginStatus);
+        echo  "<h2>$message</h2>";
+        printLinks();
     }
-    //DONT LOGIN IF ALREADY LOGGED IN (TO ADD!)
-    if (!$userExist) {
+
+    if ($loginStatus == false) {
         if (!isset($_POST['login'])) {
-            echo "<header>
-                    <h1>Login</h1>
-                 </header><hr>";
             echo "<form id=\"logininfo\" method=\"post\" action=\"login.php\">
-        <label for=\"username\"> <strong>Username:</strong><br>
-        <input type=\"text\" name=\"username\" id=\"username\" placeholder=\"Username\" required>
-        </label>
-        <label for=\"password\"><strong>Password:</strong><br>
-        <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required>
-        </label>
-        <input type=\"submit\" name=\"login\" value=\"Submit\" id=\"submitinfo\">
-        </form>";
+            <label for=\"username\"> <strong>Username:</strong><br>
+            <input type=\"text\" name=\"username\" id=\"username\" placeholder=\"Username\" required>
+            </label>
+            <label for=\"password\"><strong>Password:</strong><br>
+            <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required>
+            </label>
+            <input type=\"submit\" name=\"login\" value=\"Submit\" id=\"submitinfo\">
+            </form>";
         } else {
+            $mysqli = db_connect();
             $username = $_POST['username'];
             $enteredPassword = $_POST['password'];
 
@@ -57,17 +58,17 @@ session_start();
                         if (errorMessage != null) {
                             document.querySelector("body").removeChild(errorMessage);
                         }
+
+                        var header = document.querySelector("h1");
+                        if (header != null) {
+                            header.innerHTML = "Options Menu";
+                        }
                     </script>
     <?php
-                    echo "<header>
-                    <h1>Options Menu</h1> 
-                    </header> <hr>";
-                    echo "<h2>Welcome {$_SESSION['username']}</h2>";
-                    echo "<a href=\"get_game.php\">Play Game</a>";
-                    echo "<a href=\"show_results.php\">Show Statistics</a>";
-                    echo "<a href=\"logout.php\">Logout</a>";
+                    echo  "<h2>".getWelcomeMessage('verified')."</h2>";
+                    printLinks();
                 } else {
-                    echo "<header><h1>Login failed: either username or password is incorrect</h1></header>";
+                    echo "<h2>Login failed: either username or password is incorrect</h2>";
                     echo "<a href=\"login.php\">Try Again</a>";
                 }
                 $passwordResult->close();
@@ -77,11 +78,6 @@ session_start();
             }
             $mysqli->close();
         }
-    } else {
-        echo "<a href=\"get_game.php\">Play Game</a>";
-        echo "<a href=\"show_results.php\">Show Statistics</a>";
-        echo "<a href=\"admin.php\">Admin</a>";
-        echo "<a href=\"logout.php\">Logout</a>";
     }
     ?>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

@@ -1,13 +1,7 @@
 <?php
 session_start();
 require_once("functions.php");
-$userExist = true;
-if (!isset($_SESSION['username'])) {
-    echo "<h2>You must be logged in to play a game</h2>";
-    $userExist = false;
-} else {
-    $userExist = authenticate();
-}
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +15,17 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
+    <header>
+        <h1>Play Game</h1>
+    </header>
+    <hr>
     <?php
+
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
+
     $mysqli = db_connect();
-    if ($userExist) {
+    if ($loginStatus == 'verified') {
         $numQuestions = 5;
         $questionsQuery = "SELECT DISTINCT * FROM Questions50505 ORDER BY RAND() LIMIT $numQuestions";
         $questions = $mysqli->query($questionsQuery);

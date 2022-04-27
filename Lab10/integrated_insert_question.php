@@ -34,7 +34,7 @@ if ($action == "Insert") {
 
             //INSERT QUESTION INTO TABLE
             $insertQuery = "INSERT INTO Questions50505 (question, choice1, choice2, choice3, choice4, answer) VALUES
-        ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
+            ('$q', '$c1', '$c2', '$c3', '$c4', '$a')";
             $mysqli->query($insertQuery);
 
             //EXECUTES show_questions
@@ -43,7 +43,7 @@ if ($action == "Insert") {
             '<table>';
             echo
             '<tr>';
-            // echo var_dump($result);
+            
             while ($row = $result->fetch_row()) {
                 echo '<th>' . $row[0] . '</th>';
             }
