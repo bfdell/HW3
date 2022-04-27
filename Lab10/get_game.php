@@ -15,6 +15,7 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width= device-width, initial-scale=1, shrink-to-fit=no">
     <title>Get Game</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -30,28 +31,28 @@ if (!isset($_SESSION['username'])) {
     $questionsArr = array();
     while ($question = $questions->fetch_assoc()) {
 
-        echo "<label>{$question['question']}<br>
-        </label><br>
+        echo "<label>{$question['question']}
+        </label>
         <div class=\"questionfield\">
-            <label>{$question['choice1']}<br>
+            <label>{$question['choice1']}
             <input type=\"radio\" name=\"answer$i\" value=\"1\">
             </label>
         </div>
         <div class=\"questionfield\">
-            <label>{$question['choice2']}<br>
+            <label>{$question['choice2']}
             <input type=\"radio\" name=\"answer$i\" value=\"2\">
             </label>
         </div>
         <div class=\"questionfield\">
-            <label>{$question['choice3']}<br>
+            <label>{$question['choice3']}
             <input type=\"radio\" name=\"answer$i\" value=\"3\">
             </label>
         </div>
         <div class=\"questionfield\">
-            <label>{$question['choice4']}<br>
+            <label>{$question['choice4']}
             <input type=\"radio\" name=\"answer$i\" value=\"4\">
             </label>
-        </div><br>";
+        </div>";
 
         $questionsArr["question$i"] = $question['question'];
         $i++;

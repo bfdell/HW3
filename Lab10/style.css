@@ -111,3 +111,18 @@ table {
 .questionfield label {
     width: 40vh;
 }
+
+form[action="process_game.php"] > label{
+    font-size: 2em;
+}
+
+.questionfield {
+    margin: auto;
+
+}
+
+form .questionfield input[type="radio"] {
+    width: 40%;
+    height: 20px;
+    width: 20px;
+}
