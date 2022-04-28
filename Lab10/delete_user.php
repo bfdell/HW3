@@ -1,6 +1,7 @@
 <?php
 session_start();
-//Add authentication
+require_once("functions.php");
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,31 +21,32 @@ session_start();
     <hr>
 
     <?php
-    require_once("functions.php");
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
+    if ($loginStatus == "verified") {
+        if (isset($_POST['deleteuser'])) {
+            $username = $_POST['user'];
+            $mysqli = db_connect();
+            $deleteGamesQuery = "DELETE FROM Games50505 WHERE username = '$username'";
+            $mysqli->query($deleteGamesQuery);
 
-    if (isset($_POST['deleteuser'])) {
-        $username = $_POST['user'];
-        $mysqli = db_connect();
-        $deleteGamesQuery = "DELETE FROM Games50505 WHERE username = '$username'";
-        $mysqli->query($deleteGamesQuery);
+            $deleteUserQuery = "DELETE FROM Users50505 WHERE username = '$username'";
+            $mysqli->query($deleteUserQuery);
+            echo "<h2>Successfully deleted the user \"$username\"</h2>";
 
-        $deleteUserQuery = "DELETE FROM Users50505 WHERE username = '$username'";
-        $mysqli->query($deleteUserQuery);
-        echo "<h2>Successfully deleted the user \"$username\"</h2>";
-
-        $mysqli->close();
-    }
-    $users = get_users();
-    echo "<form method=\"post\" action=\"delete_user.php\">
+            $mysqli->close();
+        }
+        $users = get_users();
+        echo "<form method=\"post\" action=\"delete_user.php\">
         <select name=\"user\">";
-    foreach ($users as $username) {
-        echo "<option value=\"$username\">$username</option>";
-    }
-    echo "</select> 
+        foreach ($users as $username) {
+            echo "<option value=\"$username\">$username</option>";
+        }
+        echo "</select> 
         <br>
         <input type=\"submit\" name=\"deleteuser\" value=\"Delete User\">
         </form>";
-
+    }
     ?>
     <br>
     <a href="admin.php">Admin</a>

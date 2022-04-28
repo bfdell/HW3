@@ -76,14 +76,13 @@ label input:hover,
 
 a {
     text-align: center;
-    margin: 20px auto 10px;
+    margin: 15px auto 10px;
     display: block;
     width: 10%;
     font-size: 1.5em;
     text-decoration: none;
     padding: 7px;
     border-radius: 30px;
-    /* background-color: blue; */
     background-color: rgb(219, 110, 93);
     color: black;
 }

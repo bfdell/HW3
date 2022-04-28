@@ -1,3 +1,8 @@
+<?php
+session_start();
+require_once("functions.php");
+$loginStatus = authenticate();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,32 +20,36 @@
     </header>
     <hr>
     <?php
-    require_once("functions.php");
-    $mysqli = db_connect();
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
 
-    $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
-    echo
-    '<table>';
-    echo
-    '<tr>';
+    if ($loginStatus == "verified") {
+        $mysqli = db_connect();
 
-    while ($row = $result->fetch_row()) {
-        echo '<th>' . $row[0] . '</th>';
-    }
-    echo '</tr>';
-    $result->close();
-    $result = $mysqli->query("SELECT * FROM Questions50505");
+        $result = $mysqli->query("SHOW COLUMNS FROM Questions50505");
+        echo
+        '<table>';
+        echo
+        '<tr>';
 
-    while ($row = $result->fetch_row()) {
-        echo '<tr>';
-        foreach ($row as $value) {
-            echo '<td>' . $value . '</td>';
+        while ($row = $result->fetch_row()) {
+            echo '<th>' . $row[0] . '</th>';
         }
         echo '</tr>';
+        $result->close();
+        $result = $mysqli->query("SELECT * FROM Questions50505");
+
+        while ($row = $result->fetch_row()) {
+            echo '<tr>';
+            foreach ($row as $value) {
+                echo '<td>' . $value . '</td>';
+            }
+            echo '</tr>';
+        }
+        echo '</table>';
+        $result->close();
+        $mysqli->close();
     }
-    echo '</table>';
-    $result->close();
-    $mysqli->close();
     ?>
     <br>
     <a href="admin.php">Admin</a>

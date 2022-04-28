@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("functions.php");
+$loginStatus = authenticate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,29 +21,30 @@ session_start();
     <hr>
 
     <?php
-    require_once("functions.php");
+    $message = getWelcomeMessage($loginStatus);
+    echo  "<h2>$message</h2>";
+    if ($loginStatus == "verified") {
+        if (isset($_POST['deletequestion'])) {
+            $mysqli = db_connect();
+            $question = $_POST['question'];
 
-    if (isset($_POST['deletequestion'])) {
-        $mysqli = db_connect();
-        $question = $_POST['question'];
+            $deleteQuestionQuery = "DELETE FROM Questions50505 WHERE question = '$question'";
+            $mysqli->query($deleteQuestionQuery);
+            echo "<h2>Successfully deleted the question \"$question\"</h2>";
 
-        $deleteQuestionQuery = "DELETE FROM Questions50505 WHERE question = '$question'";
-        $mysqli->query($deleteQuestionQuery);
-        echo "<h2>Successfully deleted the question \"$question\"</h2>";
-
-        $mysqli->close();
-    }
-    $questions = get_questions();
-    echo "<form method=\"post\" action=\"delete_question.php\">
+            $mysqli->close();
+        }
+        $questions = get_questions();
+        echo "<form method=\"post\" action=\"delete_question.php\">
         <select name=\"question\">";
-    foreach ($questions as $question) {
-        echo "<option value=\"$question\">$question</option>";
-    }
-    echo "</select> 
+        foreach ($questions as $question) {
+            echo "<option value=\"$question\">$question</option>";
+        }
+        echo "</select> 
         <br>
         <input type=\"submit\" name=\"deletequestion\" value=\"Delete Question\">
         </form>";
-
+    }
     ?>
     <br>
     <a href="admin.php">Admin</a>
